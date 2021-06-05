@@ -38,6 +38,12 @@ export const actions = {
         vuexContext.commit('RESET_STORE')
         return
       })
+  },
+  createPost(vuexContext) {
+    const token = vuexContext.getters.userToken
+    this.$axios.post('https://amplify-a4c63-default-rtdb.firebaseio.com/posts.json?auth=' + token, {name: "Test Post"})
+    .then((result) => console.log(result))
+    .catch((e) => console.log(e))
   }
 }
 
@@ -65,5 +71,8 @@ export const getters = {
   },
   userEmail(state) {
     return state.authUser.email
+  },
+  userToken(state) {
+    return state.authUser.token
   }
 }
