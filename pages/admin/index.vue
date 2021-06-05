@@ -11,6 +11,7 @@
         accept="image/jpeg"
       />
     </div>
+    <img src="https://firebasestorage.googleapis.com/v0/b/amplify-a4c63.appspot.com/o/images%2F456.jpg?alt=media&token=534c10e3-981f-4c72-bb14-a82d4680cf3b">
   </div>
 </template>
 
