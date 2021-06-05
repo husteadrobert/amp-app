@@ -11,9 +11,6 @@
 
 <script>
 export default ({
-  asyncData(context) {
-    console.log(context.res)
-  },
   data() {
     return {
       email: null,
@@ -25,7 +22,10 @@ export default ({
       await this.$store.dispatch('authentication/signIn', {email: this.email, password: this.password})
       .then((result) => {
         if(result) {
-          this.$router.push('/admin')
+          // Due to timing issues, need to wait a second for Store State to 'catch up'
+          setTimeout(function(){
+            this.$router.push('/admin')
+           }.bind(this), 1000)
         }
       })
       .catch((e) => console.log(e))
