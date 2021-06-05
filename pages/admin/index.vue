@@ -3,6 +3,14 @@
     Admin Page for {{ currentUser }}
     <a href="#" @click.prevent="onSignOut">Sign Out</a>
     <a href="#" @click.prevent="onCreatePost">Create Post</a>
+    <div>
+      <input
+        ref="imageFile"
+        @change.prevent="uploadImageFile($event.target.files)"
+        type="file"
+        accept="image/jpeg"
+      />
+    </div>
   </div>
 </template>
 
@@ -24,6 +32,27 @@ export default ({
     },
     onCreatePost() {
       this.$store.dispatch('authentication/createPost')
+    },
+    uploadImageFile(files) {
+      if (!files.length) {
+        return
+      }
+      const file = files[0]
+
+      const metadata = { contentType: file.type }
+      const storage = this.$fire.storage
+      const imageRef = storage.ref(`images/${file.name}`)
+
+      const uploadTask = imageRef.put(file, metadata).then((snapshot) => {
+        return snapshot.ref.getDownloadURL().then((url) => {
+          return url
+        })
+      }).catch((e) => console.log(e))
+
+      uploadTask.then((url) => {
+        console.log("THIS IS THE URL")
+        console.log(url)
+      })
     }
   }
 })
