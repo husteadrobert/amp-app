@@ -32,8 +32,8 @@ export const actions = {
         return authUser
       })
   },
-  async signOut(vuexContext) {
-    return await this.$fire.auth.signOut()
+  signOut(vuexContext) {
+    return this.$fire.auth.signOut()
       .then(() => {
         vuexContext.commit('RESET_STORE')
         return

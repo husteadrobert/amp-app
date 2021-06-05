@@ -25,7 +25,7 @@ export default ({
           // Due to timing issues, need to wait a second for Store State to 'catch up'
           setTimeout(function(){
             this.$router.push('/admin')
-           }.bind(this), 1000)
+           }.bind(this), 2000)
         }
       })
       .catch((e) => console.log(e))

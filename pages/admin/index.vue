@@ -16,8 +16,8 @@ export default ({
     }
   },
   methods: {
-    async onSignOut() {
-      await this.$store.dispatch('authentication/signOut')
+    onSignOut() {
+      this.$store.dispatch('authentication/signOut')
       .then(() => this.$router.push('/admin/auth'))
       .catch((e) => console.log(e))
     }
