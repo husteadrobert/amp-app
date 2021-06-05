@@ -9,6 +9,8 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  css: [ ],
+
   components: true,
 
   buildModules: [
@@ -41,7 +43,13 @@ export default {
 
   modules: ['@nuxtjs/pwa', '@nuxtjs/axios'],
 
-  build: {},
+  build: {
+    extend(config, { isDev, isClient }) {
+      config.node = {
+        fs: 'empty'
+      }
+    }
+  },
 
   /*
    ** Nuxt.js Middleware

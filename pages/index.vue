@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <div>
-      {{ currentUser }}
+    <div class="test">
+      <div class="test2">
+        {{ currentUser }}
+      </div>
     </div>
     <div>
       <Logo />
@@ -69,7 +71,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="less">
+.test {
+  color: red;
+  .test2 {
+    color: blue;
+  }
+}
+
 .container {
   margin: 0 auto;
   min-height: 100vh;
