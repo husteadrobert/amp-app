@@ -1,6 +1,7 @@
 <template>
   <div>
-    Admin Page
+    Admin Page for {{ currentUser }}
+    <a href="#" @click.prevent="onSignOut">Sign Out</a>
   </div>
 </template>
 
@@ -8,6 +9,18 @@
 
 
 export default ({
-  
+  middleware: ['check-auth'],
+  computed: {
+    currentUser() {
+      return this.$store.getters['authentication/userEmail']
+    }
+  },
+  methods: {
+    async onSignOut() {
+      await this.$store.dispatch('authentication/signOut')
+      .then(() => this.$router.push('/admin/auth'))
+      .catch((e) => console.log(e))
+    }
+  }
 })
 </script>

@@ -22,9 +22,17 @@ export const actions = {
   },
   async signIn(vuexContext, signInDetails) {
     return await this.$fire.auth.signInWithEmailAndPassword(signInDetails.email, signInDetails.password)
+      .then((authUser) => {
+        vuexContext.commit('SET_AUTH_USER', {authUser})
+        return authUser
+      })
   },
   async signOut(vuexContext) {
     return await this.$fire.auth.signOut()
+      .then(() => {
+        vuexContext.commit('RESET_STORE')
+        return
+      })
   }
 }
 
