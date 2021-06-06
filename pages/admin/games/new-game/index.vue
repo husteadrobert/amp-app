@@ -17,7 +17,7 @@ export default {
   methods: {
     onSubmit(payload) {
       console.log(payload)
-      // Send to Action
+      // Send to Action, then push /admin/game/id
     }
   }
 }
