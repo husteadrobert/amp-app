@@ -1,7 +1,6 @@
 <template>
   <div>
     Admin Page for {{ currentUser }}
-    <a href="#" @click.prevent="onSignOut">Sign Out</a>
     <a href="#" @click.prevent="onCreatePost">Create Post</a>
     <div>
       <input
@@ -19,6 +18,7 @@
 
 
 export default ({
+  layout: 'admin',
   middleware: ['check-auth'],
   computed: {
     currentUser() {
@@ -26,11 +26,6 @@ export default ({
     }
   },
   methods: {
-    onSignOut() {
-      this.$store.dispatch('authentication/signOut')
-      .then(() => this.$router.push('/admin/auth'))
-      .catch((e) => console.log(e))
-    },
     onCreatePost() {
       this.$store.dispatch('authentication/createPost')
     },
