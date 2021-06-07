@@ -3,7 +3,11 @@
     Song list here
     <nuxt-link :to="newSongUrl">New Songs</nuxt-link>
     <ul>
-      <li v-for="song in orderedSongs()" :key="song.id">{{ song.name }} - {{ albumName(song) }}</li>
+      <li v-for="song in orderedSongs(song)" :key="song.id">
+        <nuxt-link :to="editSongUrl(song)">
+          {{ song.name }} - {{ albumName(song) }}
+        </nuxt-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -20,6 +24,11 @@ export default {
       required: false
     },
   },
+  data() {
+    return {
+      song: ''
+    }
+  },
   methods: {
     albumName(song) {
       return this.albums.filter((album) => album.id === song.selectedAlbum)[0].name
@@ -27,6 +36,9 @@ export default {
     orderedSongs() {
       // order songs this.songs.filter....
       return this.songs
+    },
+    editSongUrl(song) {
+      return "/admin/games/" + this.$store.getters['games/game'].id + "/songs/" + song.id + "/edit-song"
     }
   },
   computed: {

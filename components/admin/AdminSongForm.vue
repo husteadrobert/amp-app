@@ -119,8 +119,8 @@ export default {
       .catch((e) => console.log(e))
     },
     onSubmit() {
+      this.$emit('submit', this.editSong)
       if (!this.isEdit) {
-        this.$emit('submit', this.editSong)
         this.editSong.name = ''
         this.editSong.imageUrl = ''
       }

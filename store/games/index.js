@@ -82,6 +82,13 @@ export const actions = {
       vuexContext.commit('addSong', newSong)
     })
     .catch(e => console.log(error))
+  },
+  editSong(vuexContext, editSong) {
+    return axios.patch('https://amplify-a4c63-default-rtdb.firebaseio.com/games/' + vuexContext.getters.game.id + '/songs/' + editSong.id + '.json?auth=' + vuexContext.getters.getUserToken, editSong)
+    .then((result) => {
+     vuexContext.commit('updateSong', editSong)
+    })
+    .catch(e => console.log(e))
   }
 }
 
@@ -117,6 +124,10 @@ export const mutations = {
   },
   addSong(state, song) {
     state.game.songs.push(song)
+  },
+  updateSong(state, updatedSong) {
+    const idx = state.game.songs.findIndex(song => song.id === updatedSong.id)
+    state.game.songs[idx] = updatedSong
   }
 }
 
