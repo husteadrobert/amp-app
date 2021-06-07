@@ -1,6 +1,6 @@
 <template>
   <div>
-    Game Page with ID
+    Game Page with ID {{ this.$route.params.gameId }}
   </div>
 </template>
 
