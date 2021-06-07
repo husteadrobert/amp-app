@@ -16,6 +16,7 @@ export const actions = {
         claims,
       })
     }
+    await dispatch('games/initGames')
   },
   /*
   async onAuthStateChanged({ commit }, { authUser }) {

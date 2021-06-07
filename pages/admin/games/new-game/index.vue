@@ -16,8 +16,11 @@ export default {
   },
   methods: {
     onSubmit(payload) {
-      console.log(payload)
-      // Send to Action, then push /admin/game/id
+      this.$store.dispatch('games/addGame', payload)
+      .then((result) => {
+        this.$router.push('/admin/games')
+      })
+      .catch((e) => console.log(e))
     }
   }
 }

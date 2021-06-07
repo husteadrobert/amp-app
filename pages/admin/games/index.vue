@@ -6,13 +6,23 @@
         Game Index Page
       </h1>
     </header>
+    <section class="game-list">
+      <ul>
+        <li v-for="game in gameList" :key="game.id">{{game.name}} - {{game.id}} - {{ game.imageUrl }}</li>
+      </ul>
+    </section>
   </div>
 </template>
 
 <script>
 export default {
   layout: 'admin',
-  middleware: ['check-auth']
+  middleware: ['check-auth'],
+  computed: {
+    gameList() {
+      return this.$store.getters['games/gameList']
+    }
+  }
 }
 </script>
 
