@@ -51,12 +51,21 @@ export const actions = {
     .then((result) => console.log("Updated Init List"))
     .catch((e) => console.log(e))
   },
-  initGame(vuexContext, id) {
-    axios.get('https://amplify-a4c63-default-rtdb.firebaseio.com/games/' + id + '.json?auth=' + vuexContext.getters.getUserToken)
+  async initGame(vuexContext, id) {
+    await axios.get('https://amplify-a4c63-default-rtdb.firebaseio.com/games/' + id + '.json?auth=' + vuexContext.getters.getUserToken)
     .then((result) => {
       vuexContext.commit('initGame', { ...result.data, id: id})
+      vuexContext.commit('initAlbums', vuexContext.getters.game)
     })
     .catch(e => console.log(e))
+  },
+  addAlbum(vuexContext, album) {
+    return axios.post('https://amplify-a4c63-default-rtdb.firebaseio.com/games/' + vuexContext.getters.game.id + '/albums.json?auth=' + vuexContext.getters.getUserToken, album)
+    .then((result) => {
+      const newAlbum = {...album, id: result.data.name }
+      vuexContext.commit('addAlbum', newAlbum)
+    })
+    .catch(e => console.log(error))
   }
 }
 
@@ -69,6 +78,16 @@ export const mutations = {
   },
   initGame(state, game) {
     state.game = game
+  },
+  initAlbums(state, game) {
+    const albumList = []
+    for (const key in state.game.albums) {
+      albumList.push({...state.game.albums[key], id: key})
+    }
+    state.game.albums = albumList
+  },
+  addAlbum(state, album) {
+    state.game.albums.push(album)
   }
 }
 
