@@ -1,6 +1,8 @@
 <template>
   <div class="game-preview">
-    {{ game.name }}
+    <nuxt-link :to="gameLink">
+      {{ game.name }}
+    </nuxt-link>
   </div>
 </template>
 
@@ -10,6 +12,11 @@ export default {
     game: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    gameLink() {
+      return '/admin/games/' + this.game.id
     }
   }
 }
