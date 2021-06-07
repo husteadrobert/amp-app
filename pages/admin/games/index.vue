@@ -8,7 +8,7 @@
     </header>
     <section class="game-list">
       <ul>
-        <li v-for="game in gameList" :key="game.id">{{game.name}} - {{game.id}} - {{ game.imageUrl }}</li>
+        <li v-for="game in gameList" :key="game.id">{{game.name}} - {{game.gameId}} - {{game.id}} - {{ game.imageUrl }}</li>
       </ul>
     </section>
   </div>

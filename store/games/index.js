@@ -6,7 +6,7 @@ export const state = () => ({
 
 export const actions = {
   initGames(vuexContext) {
-    return axios.get('https://amplify-a4c63-default-rtdb.firebaseio.com/games.json')
+    return axios.get('https://amplify-a4c63-default-rtdb.firebaseio.com/gamesInitList.json')
     .then(res => {
       const gamesArray = []
       for (const key in res.data) {
