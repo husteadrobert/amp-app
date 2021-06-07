@@ -14,7 +14,7 @@
         <button type="submit">Add</button>
       </form>
     </div>
-    <button @click.prevent="toggleForm"> + </button>
+    <button @click.prevent="toggleForm"> {{ showForm ? '-' : '+' }} </button>
   </div>
 </template>
 
