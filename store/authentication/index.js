@@ -40,6 +40,7 @@ export const actions = {
       })
   },
   createPost(vuexContext) {
+    // TODO DELETE ME
     const token = vuexContext.getters.userToken
     this.$axios.post('https://amplify-a4c63-default-rtdb.firebaseio.com/posts.json?auth=' + token, {name: "Test Post"})
     .then((result) => console.log(result))

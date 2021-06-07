@@ -11,6 +11,10 @@ export default {
 
   css: [ ],
 
+  plugins: [
+    {src: '~plugins/vue-upload.js', mode: 'client' }
+  ],
+
   components: true,
 
   buildModules: [
