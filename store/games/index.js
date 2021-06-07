@@ -66,6 +66,13 @@ export const actions = {
       vuexContext.commit('addAlbum', newAlbum)
     })
     .catch(e => console.log(error))
+  },
+  deleteAlbum(vuexContext, id) {
+    return axios.delete('https://amplify-a4c63-default-rtdb.firebaseio.com/games/' + vuexContext.getters.game.id + '/albums/' + id + '.json?auth=' + vuexContext.getters.getUserToken)
+    .then((result) => {
+      vuexContext.commit('deleteAlbum', id)
+    })
+    .catch(e => console.log(e))
   }
 }
 
@@ -88,6 +95,9 @@ export const mutations = {
   },
   addAlbum(state, album) {
     state.game.albums.push(album)
+  },
+  deleteAlbum(state, id) {
+    state.game.albums = state.game.albums.filter((album) => album.id !== id)
   }
 }
 

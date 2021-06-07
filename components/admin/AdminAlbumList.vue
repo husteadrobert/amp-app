@@ -2,7 +2,10 @@
   <div class="album-list">
     Album list
     <ul>
-      <li v-for="album in albums" :key="album.id"> {{album.name}}</li>
+      <li v-for="album in albums" :key="album.id">
+        {{album.name}}
+        <button type="button" @click.prevent="onDelete(album.id)">X</button>
+      </li>
     </ul>
     <div v-if="showForm" class="toggle-form">
       <form @submit.prevent="onSubmit">
@@ -37,6 +40,12 @@ export default {
       this.$store.dispatch('games/addAlbum', { name: this.albumName })
       .then((result) => {
         this.toggleForm()
+      })
+      .catch(e => console.log(e))
+    },
+    onDelete(id) {
+      this.$store.dispatch('games/deleteAlbum', id)
+      .then((result) => {
       })
       .catch(e => console.log(e))
     }
