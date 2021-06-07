@@ -6,16 +6,19 @@
         Game Index Page
       </h1>
     </header>
-    <section class="game-list">
-      <ul>
-        <li v-for="game in gameList" :key="game.id">{{game.name}} - {{game.gameId}} - {{game.id}} - {{ game.imageUrl }}</li>
-      </ul>
+    <section class="list">
+      <GameList :games="gameList" />
     </section>
   </div>
 </template>
 
 <script>
+import GameList from "@/components/games/GameList"
+
 export default {
+  components: {
+    GameList
+  },
   layout: 'admin',
   middleware: ['check-auth'],
   computed: {
