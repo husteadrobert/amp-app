@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     gameLink() {
-      return '/admin/games/' + this.game.id
+      return '/admin/games/' + this.game.gameId
     }
   }
 }

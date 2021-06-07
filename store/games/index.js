@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export const state = () => ({
-  gameList: []
+  gameList: [],
+  game: {}
 })
 
 export const actions = {
@@ -30,6 +31,32 @@ export const actions = {
       console.log("Added to InitList")
     })
     .catch(e => console.log(e))
+  },
+  editGame(vuexContext, editGame) {
+    return axios.patch('https://amplify-a4c63-default-rtdb.firebaseio.com/games/' + editGame.id + '.json?auth=' + vuexContext.getters.getUserToken, editGame)
+    .then((result) => {
+      vuexContext.commit('initGame', editGame)
+      const gameFromGameList = vuexContext.getters.gameList.filter((game) => game.gameId === editGame.id)[0]
+      vuexContext.dispatch('editGameList', {...editGame, listId: gameFromGameList.id})
+    })
+    .catch(e => console.log(e))
+  },
+  editGameList(vuexContext, editGame) {
+    const newData = {
+      gameId: editGame.id,
+      name: editGame.name,
+      imageUrl: editGame.imageUrl
+    }
+    axios.patch('https://amplify-a4c63-default-rtdb.firebaseio.com/gamesInitList/' + editGame.listId + '.json?auth=' + vuexContext.getters.getUserToken, newData)
+    .then((result) => console.log("Updated Init List"))
+    .catch((e) => console.log(e))
+  },
+  initGame(vuexContext, id) {
+    axios.get('https://amplify-a4c63-default-rtdb.firebaseio.com/games/' + id + '.json?auth=' + vuexContext.getters.getUserToken)
+    .then((result) => {
+      vuexContext.commit('initGame', { ...result.data, id: id})
+    })
+    .catch(e => console.log(e))
   }
 }
 
@@ -39,6 +66,9 @@ export const mutations = {
   },
   addGame(state, game) {
     state.gameList.push(game)
+  },
+  initGame(state, game) {
+    state.game = game
   }
 }
 
@@ -48,5 +78,8 @@ export const getters = {
   },
   gameList(state) {
     return state.gameList
+  },
+  game(state) {
+    return state.game
   }
 }
