@@ -20,6 +20,14 @@ export const actions = {
     return axios.post('https://amplify-a4c63-default-rtdb.firebaseio.com/games.json?auth=' + vuexContext.getters.getUserToken, newGame)
     .then((result) => {
       vuexContext.commit('addGame', {...newGame, id: result.data.name})
+      vuexContext.dispatch('addGameToInitList', {...newGame, gameId: result.data.name})
+    })
+    .catch(e => console.log(e))
+  },
+  async addGameToInitList(vuexContext, newGame) {
+    await axios.post('https://amplify-a4c63-default-rtdb.firebaseio.com/gamesInitList.json?auth=' + vuexContext.getters.getUserToken, newGame)
+    .then((result) => {
+      console.log("Added to InitList")
     })
     .catch(e => console.log(e))
   }
