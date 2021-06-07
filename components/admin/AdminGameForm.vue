@@ -1,18 +1,18 @@
 <template>
   <div class="admin-game-form">
     Admin Game Form
-    <form @submit.prevent="$emit('submit', game)">
+    <form @submit.prevent="$emit('submit', editGame)">
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" v-model="game.name" />
+        <input type="text" id="name" v-model="editGame.name" />
       </div>
       <div class="form-group">
         <label for="imageUrl">Image</label>
-        <div v-if="game.imageUrl">
+        <div v-if="editGame.imageUrl">
           <!-- Preview of Image -->
-          <img :src="game.imageUrl">
+          <img :src="editGame.imageUrl">
           <button
-            v-if="game.imageUrl"
+            v-if="editGame.imageUrl"
             @click="deleteImage"
             :disabled="isDeletingImage"
             type="button"
@@ -21,7 +21,7 @@
           </button>
         </div>
         <button
-          v-if="!game.imageUrl"
+          v-if="!editGame.imageUrl"
           @click="launchImageFile"
           :disabled="isUploadingImage"
           type="button"
@@ -44,9 +44,16 @@
 
 <script>
 export default {
+  props: {
+    game: {
+      type: Object,
+      required: false
+    }
+  },
   data() {
     return {
-      game: {
+      editGame: this.game ? { ...this.game} :
+      {
         name: '',
         imageUrl: ''
       },
@@ -85,14 +92,14 @@ export default {
       }).catch((e) => console.log(e))
 
       uploadTask.then((url) => {
-        this.game.imageUrl = url
+        this.editGame.imageUrl = url
         this.isUploadingImage = false
       })
     },
     deleteImage () {
-      this.$fire.storage.refFromURL(this.game.imageUrl).delete()
+      this.$fire.storage.refFromURL(this.editGame.imageUrl).delete()
       .then(() => {
-        this.game.imageUrl = ''
+        this.editGame.imageUrl = ''
       })
       .catch((e) => console.log(e))
     }

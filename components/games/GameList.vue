@@ -1,7 +1,7 @@
 <template>
   <div class="game-list">
     <ul>
-      <li v-for="game in games" :key="game.id"><GamePreview :game="game" /></li>
+      <li v-for="game in games" :key="game.gameId"><GamePreview :game="game" /></li>
     </ul>
   </div>
 </template>
