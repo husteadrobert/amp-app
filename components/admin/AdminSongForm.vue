@@ -42,6 +42,16 @@
           class="hidden"
         >
       </div>
+      <div class="form-group">
+        <div v-for="style in gamePlayStyles" :key="style.name">
+          <div class="style">
+            {{ style.name }}
+          </div>
+          <div v-for="difficulty in gameDifficulties" :key="difficulty.name">
+            <input v-model.number="editSong.difficulties[style.name][difficulty.name]"/>
+          </div>
+        </div>
+      </div>
       <button type="submit">Submit</button>
       <button type="button" @click="$router.push(`/admin/games/${$route.params.gameId}`)">Cancel</button>
     </form>
@@ -49,6 +59,8 @@
 </template>
 
 <script>
+import _ from 'lodash'
+
 export default {
   props: {
     song: {
@@ -65,12 +77,21 @@ export default {
     }
   },
   data() {
+    let diffHash = {}
+    this.$store.getters['games/game'].playStyles.forEach((style) => diffHash[style.name] = {})
+    const diffArray = this.$store.getters['games/game'].difficulties.map((diff) => diff.name)
+    Object.keys(diffHash).forEach((key) => {
+      diffArray.forEach((diffName) => {
+        diffHash[key][diffName] = null
+      })
+    })
     return {
-      editSong: this.song ? { ...this.song} :
+      editSong: this.song ? _.cloneDeep(this.song) :
       {
         name: '',
         imageUrl: '',
-        selectedAlbum: this.albums[0].id
+        selectedAlbum: this.albums[0].id,
+        difficulties: diffHash,
       },
       isUploadingImage: false,
       isDeletingImage: false
@@ -124,6 +145,14 @@ export default {
         this.editSong.name = ''
         this.editSong.imageUrl = ''
       }
+    }
+  },
+  computed: {
+    gameDifficulties() {
+      return this.$store.getters['games/game'].difficulties
+    },
+    gamePlayStyles() {
+      return this.$store.getters['games/game'].playStyles
     }
   }
 }
