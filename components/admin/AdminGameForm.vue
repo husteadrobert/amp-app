@@ -7,6 +7,22 @@
         <input type="text" id="name" v-model="editGame.name" />
       </div>
       <div class="form-group">
+        <label>Play Styles</label>
+        <div v-for="(playStyle) in editGame.playStyles" :key=playStyle.name>
+          <input v-model="playStyle.name" />
+        </div>
+        <button type="button" @click.prevent="addPlayStyle">Add PlayStyle</button>
+        <button type="button" @click.prevent="deleteLastPlayStyle">Delete Last</button>
+      </div>
+      <div class="form-group">
+        <label>Difficulties</label>
+        <div v-for="(difficulty, index) in editGame.difficulties" :key="index">
+          <input v-model="difficulty.name" />
+        </div>
+        <button type="button" @click.prevent="addDifficulty">Add Difficulty</button>
+        <button type="button" @click.prevent="deleteLastDifficulty">Delete Last</button>
+      </div>
+      <div class="form-group">
         <label for="imageUrl">Image</label>
         <div v-if="editGame.imageUrl">
           <!-- Preview of Image -->
@@ -43,6 +59,8 @@
 </template>
 
 <script>
+import _ from 'lodash'
+
 export default {
   props: {
     game: {
@@ -52,13 +70,15 @@ export default {
   },
   data() {
     return {
-      editGame: this.game ? { ...this.game} :
+      editGame: this.game ? _.cloneDeep(this.game) :
       {
         name: '',
-        imageUrl: ''
+        imageUrl: '',
+        difficulties: [],
+        playStyles: []
       },
       isUploadingImage: false,
-      isDeletingImage: false
+      isDeletingImage: false,
     }
   },
   methods: {
@@ -102,6 +122,18 @@ export default {
         this.editGame.imageUrl = ''
       })
       .catch((e) => console.log(e))
+    },
+    addDifficulty() {
+      this.editGame.difficulties.push({name: ''})
+    },
+    deleteLastDifficulty() {
+      this.editGame.difficulties.pop()
+    },
+    addPlayStyle() {
+      this.editGame.playStyles.push({name: ''})
+    },
+    deleteLastPlayStyle() {
+      this.editGame.playtyles.pop()
     }
   }
 }
