@@ -149,6 +149,9 @@ export default {
     display: none;
   }
   .form-group {
+    img {
+      width: 200px;
+    }
     label {
       display: block;
     }
