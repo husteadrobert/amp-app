@@ -56,6 +56,7 @@ export const actions = {
     .then((result) => {
       vuexContext.commit('initGame', { ...result.data, id: id})
       vuexContext.commit('initAlbums', vuexContext.getters.game)
+      vuexContext.commit('initSongs', vuexContext.getters.game)
     })
     .catch(e => console.log(e))
   },
@@ -71,6 +72,21 @@ export const actions = {
     return axios.delete('https://amplify-a4c63-default-rtdb.firebaseio.com/games/' + vuexContext.getters.game.id + '/albums/' + id + '.json?auth=' + vuexContext.getters.getUserToken)
     .then((result) => {
       vuexContext.commit('deleteAlbum', id)
+    })
+    .catch(e => console.log(e))
+  },
+  addSong(vuexContext, song) {
+    return axios.post('https://amplify-a4c63-default-rtdb.firebaseio.com/games/' + vuexContext.getters.game.id + '/songs.json?auth=' + vuexContext.getters.getUserToken, song)
+    .then((result) => {
+      const newSong = {...song, id: result.data.name }
+      vuexContext.commit('addSong', newSong)
+    })
+    .catch(e => console.log(error))
+  },
+  editSong(vuexContext, editSong) {
+    return axios.patch('https://amplify-a4c63-default-rtdb.firebaseio.com/games/' + vuexContext.getters.game.id + '/songs/' + editSong.id + '.json?auth=' + vuexContext.getters.getUserToken, editSong)
+    .then((result) => {
+     vuexContext.commit('updateSong', editSong)
     })
     .catch(e => console.log(e))
   }
@@ -93,11 +109,25 @@ export const mutations = {
     }
     state.game.albums = albumList
   },
+  initSongs(state, game) {
+    const songList = []
+    for (const key in state.game.songs) {
+      songList.push({...state.game.songs[key], id: key})
+    }
+    state.game.songs = songList
+  },
   addAlbum(state, album) {
     state.game.albums.push(album)
   },
   deleteAlbum(state, id) {
     state.game.albums = state.game.albums.filter((album) => album.id !== id)
+  },
+  addSong(state, song) {
+    state.game.songs.push(song)
+  },
+  updateSong(state, updatedSong) {
+    const idx = state.game.songs.findIndex(song => song.id === updatedSong.id)
+    state.game.songs[idx] = updatedSong
   }
 }
 
