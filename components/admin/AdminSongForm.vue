@@ -1,5 +1,5 @@
 <template>
-  <div class="song-form">
+  <div class="admin-song-form">
     Song Form
     <form @submit.prevent="onSubmit">
       <div class="form-group">
@@ -159,7 +159,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-.admin-game-form {
+.admin-song-form {
   text-align: left;
   width: 50%;
   margin: 10px auto;
