@@ -8,7 +8,7 @@
       </div>
       <div class="form-group">
         <label>Play Styles</label>
-        <div v-for="(playStyle) in editGame.playStyles" :key=playStyle.name>
+        <div v-for="(playStyle, index) in editGame.playStyles" :key="'style_' + index">
           <input v-model="playStyle.name" />
         </div>
         <button type="button" @click.prevent="addPlayStyle">Add PlayStyle</button>
