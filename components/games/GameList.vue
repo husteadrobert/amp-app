@@ -1,7 +1,7 @@
 <template>
   <div class="game-list">
     <ul>
-      <li v-for="game in games" :key="game.gameId"><GamePreview :game="game" /></li>
+      <li v-for="game in games" :key="game.gameId"><GamePreview :game="game" :isAdmin="isAdmin"/></li>
     </ul>
   </div>
 </template>
@@ -17,6 +17,10 @@ export default {
     games: {
       type: Array,
       required: true
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false
     }
   }
 }

@@ -12,11 +12,19 @@ export default {
     game: {
       type: Object,
       required: true
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     gameLink() {
-      return '/admin/games/' + this.game.gameId
+      if (this.isAdmin) {
+        return '/admin/games/' + this.game.gameId
+      } else {
+        return '/games/' + this.game.gameId
+      }
     }
   }
 }

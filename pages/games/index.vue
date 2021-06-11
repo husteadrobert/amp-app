@@ -1,0 +1,25 @@
+<template>
+  <div class="games-index">
+    Games Index
+    <GameList :games="games" />
+  </div>
+</template>
+
+<script>
+import GameList from '@/components/games/GameList'
+
+export default {
+  components: {
+    GameList
+  },
+  computed: {
+    games() {
+      return this.$store.getters['games/gameList']
+    }
+  }
+}
+</script>
+
+<style lang="less" scoped>
+
+</style>
