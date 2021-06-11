@@ -62,12 +62,8 @@ export default {
     margin-bottom: 10px;
   }
   .songList {
-    li {
-      border: 1px solid green;
-      margin-bottom: 10px;
-    }
     .slide-enter-active {
-    transition-duration: 0.2s;
+    transition-duration: 0.3s;
     transition-timing-function: linear;
     }
 
@@ -84,11 +80,13 @@ export default {
 
   .slide-enter-to, .slide-leave {
     max-height: 500px;
+    opacity: 1;
     }
 
   .slide-enter, .slide-leave-to {
     overflow: hidden;
     max-height: 0;
+    opacity: 0;
     }
   }
 }

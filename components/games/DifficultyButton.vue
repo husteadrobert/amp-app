@@ -26,9 +26,10 @@ export default {
 
 <style lang="less" scoped>
 .difficulty-button {
-  width: 60px;
-  margin-right: 10px;
+  background-color: white;
   text-align: center;
+  padding: 2px 0;
+  border-radius: 5px;
 }
 
 </style>

@@ -5,7 +5,9 @@
         <img :src="song.imageUrl">
       </div>
       <div class="songName">
-        <h3>{{ song.name }}</h3>
+        <h3>
+          {{ song.name }}
+        </h3>
       </div>
     </section>
     <section class="songDifficulties">
@@ -39,7 +41,7 @@ export default {
   computed: {
     playStyle() {
       return this.$store.getters['client/playStyle']
-    }
+    },
   }
 }
 </script>
@@ -47,41 +49,43 @@ export default {
 <style lang="less" scoped>
 
 .game-song {
-  //display: flex;
-  //justify-content: space-between;
-  //align-items: center;
   height: 100px;
-  //width: 100%;
+  border: 1px solid green;
+  margin-bottom: 10px;
   .songInfo {
     width: 100%;
     height: 100%;
     display: flex;
+    padding: 10px;
     .songImage {
       display: inline-block;
-      margin: auto 5px auto 0;
-      //margin-right: 5px;
+      margin: auto 10px auto 0;
       img {
-        max-width: 100px;
+        max-width: 80px;
       }
     }
     .songName {
-      //display: inline-block;
-      align-self: center;
       white-space: nowrap;
       overflow: hidden;
+      font-size: 20px;
+      h3 {
+        margin-top: 15px;
+      }
     }
   }
   .songDifficulties {
-    //align-self: flex-end;
     margin-right: 10px;
     position: relative;
     ul {
       position: absolute;
-      width: 300px;
-      top: -25px;
+      width: 360px;
+      top: -30px;
       right: -30px;
       li {
         display: inline-block;
+        margin-right: 10px;
+        width: 75px;
+        cursor: pointer;
       }
     }
   }
