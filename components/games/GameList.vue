@@ -27,5 +27,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.game-list {
+  padding: 10px 20px;
+  ul {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    li {
+      list-style: none;
+      margin: 10px 15px;
+    }
+  }
+}
 
 </style>

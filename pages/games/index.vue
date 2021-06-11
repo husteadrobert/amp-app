@@ -1,6 +1,5 @@
 <template>
   <div class="games-index">
-    Games Index
     <GameList :games="games" />
   </div>
 </template>
@@ -21,5 +20,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.games-index {
+  padding: 10px 20px;
+}
 
 </style>
