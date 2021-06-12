@@ -15,6 +15,9 @@ export default {
     games() {
       return this.$store.getters['games/gameList']
     }
+  },
+  mounted() {
+    this.$store.dispatch('client/resetClientState')
   }
 }
 </script>

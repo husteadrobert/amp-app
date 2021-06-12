@@ -2,7 +2,7 @@
   <div class="games-container">
     <div class="games-show">
       <div class="selected-song">
-        Main Area for {{ game.name }}
+        <StreamWidget />
       </div>
       <div class="game-options">
         <GameOption :playStyles="playStyles" />
@@ -26,11 +26,13 @@
 import _ from 'lodash'
 import GameAlbum from '@/components/games/GameAlbum'
 import GameOption from '@/components/games/GameOption'
+import StreamWidget from '@/components/UI/StreamWidget'
 
 export default {
   components: {
     GameAlbum,
-    GameOption
+    GameOption,
+    StreamWidget
   },
   data() {
     return {

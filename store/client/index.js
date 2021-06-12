@@ -22,16 +22,24 @@ export const actions = {
     vuexContext.commit('setSongAndDifficulty', data)
   },
   setSong(vuexContext, data) {
+    console.log(data)
     vuexContext.commit('setSong', data)
   },
   setPlayStyle(vuexContext, data) {
     vuexContext.commit('setPlayStyle', data)
+    if (!!vuexContext.state.selectedSong.id) {
+      const stateSong = vuexContext.state.selectedSong
+      vuexContext.dispatch('setSong', {song: stateSong})
+    }
   },
   setBackgroundColor(vuexContext, data) {
     vuexContext.commit('setBackgroundColor', data)
   },
   setShowDiff(vuexContext, data) {
     vuexContext.commit('setShowDiff', data)
+  },
+  resetClientState(vuexContext) {
+    vuexContext.commit('resetClientState')
   }
 }
 
@@ -68,6 +76,15 @@ export const mutations = {
   },
   setShowDiff(state, data) {
     state.showDiff = data
+  },
+  resetClientState(state) {
+    state.playStyle = ''
+    state.selectedSong = {}
+    state.selectedDifficultyName = ''
+    state.selectedDifficultyLevel = ''
+    state.backgroundColor = ''
+    state.showDiff = true
+
   }
 }
 
@@ -78,8 +95,11 @@ export const getters = {
   selectedSong(state) {
     return state.selectedSong
   },
-  selectedDifficulty(state) {
-    return state.selectedDificulty
+  selectedDifficultyLevel(state) {
+    return state.selectedDifficultyLevel
+  },
+  selectedDifficultyName(state) {
+    return state.selectedDifficultyName
   },
   backgroundColor(state) {
     return state.backgroundColor
