@@ -5,7 +5,6 @@
         Main Area for {{ game.name }}
       </div>
       <div class="game-options">
-        Options Area for {{ game.name }}
         <GameOption :playStyles="playStyles" />
       </div>
     </div>
