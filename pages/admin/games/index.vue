@@ -7,7 +7,7 @@
       </h1>
     </header>
     <section class="list">
-      <GameList :games="gameList" />
+      <GameList :games="gameList" :isAdmin="true" />
     </section>
   </div>
 </template>
