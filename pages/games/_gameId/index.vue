@@ -35,6 +35,7 @@ export default {
   async fetch() {
     let result = await fetch('https://amplify-a4c63-default-rtdb.firebaseio.com/games/' + this.$route.params.gameId + '.json').then(res => res.json())
     this.$store.dispatch('client/initPlayStyle', result.playStyles[0].name)
+    this.$store.dispatch('client/initSelectedSong')
     const keys = Object.keys(result.songs)
     keys.forEach((key) => {
       result.songs[key].id = key

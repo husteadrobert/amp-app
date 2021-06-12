@@ -1,5 +1,5 @@
 <template>
-  <div class="difficulty-button">
+  <div class="difficulty-button" @click.stop="onSetGameAndDifficulty" :class="{'disabled': difficultyLevel === -1}" >
     {{ difficultyName }}
   </div>
 </template>
@@ -19,6 +19,19 @@ export default {
       type: Number,
       required: true
     }
+  },
+  methods: {
+    onSetGameAndDifficulty() {
+      if (this.difficultyLevel === -1) {
+        return
+      } else {
+        const data = {
+        difficultyName: this.difficultyName,
+        difficultyLevel: this.difficultyLevel
+        }
+        this.$emit('onClickDifficulty', data)
+      }
+    }
   }
   
 }
@@ -30,6 +43,11 @@ export default {
   text-align: center;
   padding: 2px 0;
   border-radius: 5px;
+  cursor: pointer;
+  &.disabled {
+    background-color: grey;
+    cursor: default;
+  }
 }
 
 </style>

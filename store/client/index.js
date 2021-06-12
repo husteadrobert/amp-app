@@ -1,7 +1,8 @@
 export const state = () => ({
   playStyle: '',
-  selectedSong: '',
-  selectdDifficulty: ''
+  selectedSong: {},
+  selectedDifficultyName: '',
+  selectedDifficultyLevel: '',
 })
 
 export const actions = {
@@ -11,6 +12,15 @@ export const actions = {
   },
   initPlayStyle(vuexContext, data) {
     vuexContext.commit('setPlayStyle', data)
+  },
+  initSelectedSong(vuexContext) {
+    vuexContext.commit('initSelectedSong')
+  },
+  setSongAndDifficulty(vuexContext, data) {
+    vuexContext.commit('setSongAndDifficulty', data)
+  },
+  setSong(vuexContext, data) {
+    vuexContext.commit('setSong', data)
   }
 }
 
@@ -23,6 +33,21 @@ export const mutations = {
   },
   setPlayStyle(state, style) {
     state.playStyle = style
+  },
+  setSongAndDifficulty(state, data) {
+    state.selectedSong = data.song
+    state.selectedDifficultyName = data.difficultyName
+    state.selectedDifficultyLevel = data.difficultyLevel
+  },
+  setSong(state, data) {
+    state.selectedSong = data.song
+    state.selectedDifficultyName = ''
+    state.selectedDifficultyLevel = ''
+  },
+  initSelectedSong(state) {
+    state.selectedSong = {}
+    state.selectedDifficultyName = '',
+    state.selectedDifficultyLevel = ''
   }
 }
 
@@ -35,5 +60,5 @@ export const getters = {
   },
   selectedDifficulty(state) {
     return state.selectedDificulty
-  }
+  },
 }

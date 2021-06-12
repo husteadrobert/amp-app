@@ -1,5 +1,5 @@
 <template>
-  <div class="game-song">
+  <div class="game-song" @click="onSetSong">
     <section class="songInfo">
       <div class="songImage">
         <img :src="song.imageUrl">
@@ -13,7 +13,7 @@
     <section class="songDifficulties">
       <ul class="diffList">
         <li v-for="diff in orderedDifficulties" :key="song.name + '_' + diff">
-          <DifficultyButton :songId="song.id" :difficultyName="diff" :difficultyLevel="song.difficulties[playStyle][diff]" />
+          <DifficultyButton :songId="song.id" :difficultyName="diff" :difficultyLevel="song.difficulties[playStyle][diff]" @onClickDifficulty="onClickDifficulty"/>
         </li>
       </ul>
     </section>
@@ -36,6 +36,22 @@ export default {
     orderedDifficulties: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    onSetSong() {
+      const data = {
+        song: this.song
+      }
+      this.$store.dispatch('client/setSong', data)
+    },
+    onClickDifficulty(data) {
+      console.log(data)
+      const payload = {
+        ...data,
+        song: this.song
+      }
+      this.$store.dispatch('client/setSongAndDifficulty', payload)
     }
   },
   computed: {
@@ -85,7 +101,6 @@ export default {
         display: inline-block;
         margin-right: 10px;
         width: 75px;
-        cursor: pointer;
       }
     }
   }
