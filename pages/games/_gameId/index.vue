@@ -1,7 +1,12 @@
 <template>
   <div class="games-container">
     <div class="games-show">
-      Main Area for {{ game.name }}
+      <div class="selected-song">
+        Main Area for {{ game.name }}
+      </div>
+      <div class="game-options">
+        <GameOption :playStyles="playStyles" />
+      </div>
     </div>
     <div class="games-sidebar">
       <ul class="album-list">
@@ -20,16 +25,19 @@
 <script>
 import _ from 'lodash'
 import GameAlbum from '@/components/games/GameAlbum'
+import GameOption from '@/components/games/GameOption'
 
 export default {
   components: {
-    GameAlbum
+    GameAlbum,
+    GameOption
   },
   data() {
     return {
       game: {},
       songsByAlbum: [],
-      orderedDifficulties: []
+      orderedDifficulties: [],
+      playStyles: []
     }
   },
   async fetch() {
@@ -52,6 +60,7 @@ export default {
     this.game = result
     this.songsByAlbum = _.groupBy(result.songs, "selectedAlbum")
     this.orderedDifficulties = diffKeys
+    this.playStyles = result.playStyles
   },
 }
 </script>
@@ -61,8 +70,15 @@ export default {
   display: flex;
   height: 92.25vh;
   .games-show {
-    background-color: blue;
     width: 65%;
+    .selected-song {
+      background-color: blue;
+      height: 75%;
+    }
+    .game-options {
+      background-color:lightskyblue;
+      height: 25%;
+    }
   }
   .games-sidebar {
     padding: 15px;
