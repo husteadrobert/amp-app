@@ -1,6 +1,5 @@
 <template>
   <div class="lp">
-    Landing Page
   </div>
 </template>
 
@@ -10,5 +9,9 @@ export default {
 </script>
 
 <style scoped lang="less">
-
+.lp {
+  height: 100vh;
+  background-image: url('~@/assets/images/dj.jpg');
+  background-size: cover;
+}
 </style>

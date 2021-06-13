@@ -24,7 +24,10 @@ export default {
 
 <style lang="less" scoped>
 .games-index {
+  height: 100vh;
   padding: 10px 20px;
+  background-image: url('~@/assets/images/turntable.jpg');
+  background-size: cover;
 }
 
 </style>

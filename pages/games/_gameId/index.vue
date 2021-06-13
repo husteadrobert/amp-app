@@ -71,20 +71,26 @@ export default {
 .games-container {
   display: flex;
   height: 92.25vh;
+  background-image: url('~@/assets/images/dials.jpg');
+  background-size: cover;
   .games-show {
     width: 65%;
     .selected-song {
-      background-color: blue;
+      //background-color: blue;
+      //background: rgba(255, 255, 255, 0.2);
       height: 80%;
     }
     .game-options {
-      background-color:lightskyblue;
+      //background-color:lightskyblue;
+      background: rgba(255, 255, 255, 0.2);
+      border-top: 1px solid rgb(175, 60, 171);
       height: 20%;
     }
   }
   .games-sidebar {
     padding: 15px;
-    background-color: red;
+    //background-color: red;
+    border-left: 1px solid rgb(175, 60, 171);
     width: 35%;
     overflow: auto;
     .album-list {

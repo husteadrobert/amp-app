@@ -51,6 +51,7 @@ export default {
     .viewport {
       width: 500px;
       height: 500px;
+      border: 1px solid rgb(175, 60, 171);
       .viewport-inner {
         width: 100%;
         height: 100%;

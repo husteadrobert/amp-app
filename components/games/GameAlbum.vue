@@ -53,13 +53,19 @@ export default {
 <style lang="less" scoped>
 .game-album {
   .albumPlate {
-    border: 1px solid black;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(241,190,82,1) 0%, rgba(0,0,0,1) 100%);
+    border: 1px solid gold;
     padding: 10px 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    border-radius: 10px;
     margin-bottom: 10px;
+    h3 {
+      color:#efc35e;
+    }
   }
   .songList {
     .slide-enter-active {

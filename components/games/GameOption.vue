@@ -81,6 +81,7 @@ export default {
 
 <style lang="less" scoped>
 .game-option {
+  color: white;
   padding: 10px;
   .title {
     margin-bottom: 10px;

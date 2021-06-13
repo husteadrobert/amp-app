@@ -47,6 +47,14 @@ export default {
   &.disabled {
     background-color: grey;
     cursor: default;
+    &:hover {
+      background-color: grey;
+      color: black;
+    }
+  }
+  &:hover {
+    background: rgb(175, 60, 171);
+    color: white;
   }
 }
 

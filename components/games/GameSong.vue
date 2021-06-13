@@ -66,13 +66,16 @@ export default {
 
 .game-song {
   height: 100px;
-  border: 1px solid green;
+  border: 1px solid black;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
   margin-bottom: 10px;
   .songInfo {
     width: 100%;
     height: 100%;
     display: flex;
     padding: 10px;
+    cursor: pointer;
     .songImage {
       display: inline-block;
       margin: auto 10px auto 0;

@@ -37,6 +37,8 @@ html {
 
 body {
   overflow: hidden;
+  background-image: url('~@/assets/images/noise.gif');
+  background-size: cover;
 }
 
 *,

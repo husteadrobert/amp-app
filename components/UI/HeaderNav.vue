@@ -7,9 +7,17 @@
         </div>
       </nuxt-link>
       <div class="navigation-buttons">
-        <nuxt-link to="/games">Games</nuxt-link>
-        <nuxt-link to="/howto">How To Use</nuxt-link>
-        <nuxt-link to="/about">About</nuxt-link>
+        <ul>
+          <li class="games">
+            <nuxt-link to="/games">Games</nuxt-link>
+          </li>
+          <li class="howto">
+            <nuxt-link to="/howto">How To Use</nuxt-link>
+          </li>
+          <li class="about">
+            <nuxt-link to="/about">About</nuxt-link>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -24,7 +32,11 @@ export default {
 <style lang="less" scoped>
 .header-nav {
   display: block;
-  background-color: green;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(175,60,171,1) 0%, rgba(0,0,0,1) 50%);
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom: 1px solid rgb(175, 60, 171);
   height: 75px;
   .header-nav-inner {
     display: flex;
@@ -33,9 +45,29 @@ export default {
     justify-content: space-between;
     margin: 0 10px;
     .navigation-buttons {
-      display: flex;
       width: 25%;
-      justify-content: space-around;
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        li {
+          display: inline-block;
+          margin-right: 10px;
+          background-color: #461444;
+          border-radius: 10px;
+          &.games {
+            background-color: rgb(175, 60, 171);
+          }
+          a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: block;
+            padding: 20px;
+
+          }
+        }
+      }
     }
   }
 }

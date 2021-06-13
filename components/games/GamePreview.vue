@@ -43,13 +43,16 @@ export default {
 .game-preview {
   border: 1px solid black;
   border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  :hover {
+    background-color: rgb(175, 60, 171);
+    border-radius: 10px;
+  }
   a {
     text-decoration: none;
-    color: black;
-    :hover {
-      background-color: aqua;
-      border-radius: 10px;
-    }
+    color: #ffffff;
+    font-weight: bold;
+
   }
   .preview-wrapper {
     width: 275px;
