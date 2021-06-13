@@ -21,6 +21,16 @@
         </select>
       </div>
       <div class="option-set">
+        <label for="fontColor">Font Color:</label>
+        <select id= "fontColor">
+          <option value="">None</option>
+          <option value="#00b140">Green</option>
+          <option value="#0047bb">Blue</option>
+          <option value="#000000">Black</option>
+          <option value="#FFFFFF">White</option>
+        </select>
+      </div>
+      <div class="option-set">
         <input type="radio" id="showDiff" :value="true" v-model="showDiffRadio">
         <label for="showDiff">Show Difficulty</label>
         <br>

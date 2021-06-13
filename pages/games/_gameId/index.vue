@@ -75,11 +75,11 @@ export default {
     width: 65%;
     .selected-song {
       background-color: blue;
-      height: 75%;
+      height: 80%;
     }
     .game-options {
       background-color:lightskyblue;
-      height: 25%;
+      height: 20%;
     }
   }
   .games-sidebar {

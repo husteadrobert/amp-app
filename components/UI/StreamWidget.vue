@@ -1,6 +1,5 @@
 <template>
   <div class="stream-widget">
-    Main Streaming Wiget
     <div v-if="!!selectedSong.id" class="widget-display">
       <div class="viewport">
         <div class="viewport-inner">
@@ -45,30 +44,36 @@ export default {
 .stream-widget {
   height: 100%;
   .widget-display {
-    height: 90%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     .viewport {
-      width: 475px;
-      height: 475px;
+      width: 500px;
+      height: 500px;
       .viewport-inner {
         width: 100%;
         height: 100%;
         .songImage {
-          display: block;
+          display: flex;
+          justify-content: center;
           height: 70%;
           background-color: black;
-          img {
-            max-height: 475px;
-            max-width: 475px;
+          .image {
+            align-self: flex-end;
+            img {
+              max-height: 335px;
+              max-width: 475px;
+            }
           }
+
         }
         .songInfo {
           display: block;
-          padding: 10px;
+          padding: 10px 10px 10px 80px;
           height: 30%;
-          background-color:lime;
+          color: white;
+          background-color:black;
         }
       }
     }
