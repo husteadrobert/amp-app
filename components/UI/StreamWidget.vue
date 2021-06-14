@@ -1,14 +1,14 @@
 <template>
   <div class="stream-widget">
     <div v-if="!!selectedSong.id" class="widget-display">
-      <div class="viewport">
+      <div class="viewport" :style="{backgroundColor: selectedBackgroundColor}">
         <div class="viewport-inner">
           <section class="songImage">
             <div class="image">
               <img :src="selectedSong.imageUrl">
             </div>
           </section>
-          <section class="songInfo">
+          <section class="songInfo" :style="{color: selectedFontColor}">
             <div class="info">
               <h2>{{ selectedSong.name }}</h2>
               <h3>{{ selectedPlayStyle }} - {{ selectedDifficultyName }} - {{ selectedDifficultyLevel }}</h3>
@@ -34,6 +34,15 @@ export default {
     },
     selectedPlayStyle() {
       return this.$store.getters['client/playStyle']
+    },
+    selectedBackgroundColor() {
+      return this.$store.getters['client/backgroundColor']
+    },
+    selectedFontColor() {
+      return this.$store.getters['client/fontColor']
+    },
+    selectedShowDiff() {
+      return this.$store.getters['client/showDiff']
     }
   }
   
@@ -59,7 +68,6 @@ export default {
           display: flex;
           justify-content: center;
           height: 70%;
-          background-color: black;
           .image {
             align-self: flex-end;
             img {
@@ -73,8 +81,6 @@ export default {
           display: block;
           padding: 10px 10px 10px 80px;
           height: 30%;
-          color: white;
-          background-color:black;
         }
       }
     }

@@ -3,7 +3,8 @@ export const state = () => ({
   selectedSong: {},
   selectedDifficultyName: '',
   selectedDifficultyLevel: '',
-  backgroundColor: '',
+  backgroundColor: '#000000',
+  fontColor: '#FFFFFF',
   showDiff: true
 })
 
@@ -34,6 +35,9 @@ export const actions = {
   },
   setBackgroundColor(vuexContext, data) {
     vuexContext.commit('setBackgroundColor', data)
+  },
+  setFontColor(vuexContext, data) {
+    vuexContext.commit('setFontColor', data)
   },
   setShowDiff(vuexContext, data) {
     vuexContext.commit('setShowDiff', data)
@@ -74,6 +78,9 @@ export const mutations = {
   setBackgroundColor(state, data) {
     state.backgroundColor = data
   },
+  setFontColor(state, data) {
+    state.fontColor = data
+  },
   setShowDiff(state, data) {
     state.showDiff = data
   },
@@ -82,7 +89,7 @@ export const mutations = {
     state.selectedSong = {}
     state.selectedDifficultyName = ''
     state.selectedDifficultyLevel = ''
-    state.backgroundColor = ''
+    state.backgroundColor = '#000000'
     state.showDiff = true
 
   }
@@ -103,6 +110,9 @@ export const getters = {
   },
   backgroundColor(state) {
     return state.backgroundColor
+  },
+  fontColor(state) {
+    return state.fontColor
   },
   showDiff(state) {
     return state.showDiff

@@ -22,8 +22,7 @@
       </div>
       <div class="option-set">
         <label for="fontColor">Font Color:</label>
-        <select id= "fontColor">
-          <option value="">None</option>
+        <select id= "fontColor" v-model="selectedFontColor">
           <option value="#00b140">Green</option>
           <option value="#0047bb">Blue</option>
           <option value="#000000">Black</option>
@@ -72,6 +71,14 @@ export default {
       },
       set: function(newValue) {
         this.$store.dispatch('client/setShowDiff', newValue)
+      }
+    },
+    selectedFontColor: {
+      get: function() {
+        return this.$store.getters['client/fontColor']
+      },
+      set: function(newValue) {
+        this.$store.dispatch('client/setFontColor', newValue)
       }
     }
 
