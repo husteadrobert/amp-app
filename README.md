@@ -1,4 +1,10 @@
-# test2
+# Amp-App
+
+## TODO
+- Add filtering to Albums
+- Game Widget Name and Difficulty design
+- Change Layouts from Deafult to Admin, MainWidget, and Pages (overflow css isssuse)
+- Style MuseDash Difficulty Buttons to show color of difficulty?
 
 ## Build Setup
 
