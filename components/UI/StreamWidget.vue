@@ -1,7 +1,7 @@
 <template>
   <div class="stream-widget">
     <div v-if="!!selectedSong.id" class="widget-display">
-      <div class="viewport" :style="{backgroundColor: selectedBackgroundColor}">
+      <div class="viewport" :style="{backgroundColor: selectedBackgroundColor, border: setBorder}">
         <div class="viewport-inner">
           <section class="songImage">
             <div class="image">
@@ -43,6 +43,13 @@ export default {
     },
     selectedShowDiff() {
       return this.$store.getters['client/showDiff']
+    },
+    setBorder() {
+      if (this.selectedBackgroundColor === "") {
+        return "none"
+      } else {
+        return "1px solid rgb(175, 60, 171)"
+      }
     }
   }
   
@@ -60,7 +67,6 @@ export default {
     .viewport {
       width: 500px;
       height: 500px;
-      border: 1px solid rgb(175, 60, 171);
       .viewport-inner {
         width: 100%;
         height: 100%;
