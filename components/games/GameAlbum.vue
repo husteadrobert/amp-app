@@ -2,12 +2,18 @@
   <div class="game-album">
     <section class="albumPlate" @click.prevent="onToggleAlbum">
       <h2>{{ name }}</h2>
-      <h3>{{ songs.length }} Songs</h3>
+      <div class="rightSide">
+        <div v-if="toggleList" class="filterInput">
+          <input type="search" placeholder="Search..." @click.stop v-model="filterText" />
+          <button type="button" @click.stop="onToggleKanji" :class="filterKanji ? 'toggled' : ''">漢</button>
+        </div>
+        <h3>{{ songs.length }} Songs</h3>
+      </div>
     </section>
     <section class="songList">
       <transition name="slide">
         <ul v-show="toggleList">
-          <li v-for="song in songs" :key="song.id">
+          <li v-for="song in filteredSongs" :key="song.id">
             <GameSong :song="song" :orderedDifficulties="orderedDifficulties" />
           </li>
         </ul>
@@ -40,12 +46,35 @@ export default {
   data() {
     return {
       toggleList: false,
-      name: !!this.album ? this.album.name : "All Songs"
+      name: !!this.album ? this.album.name : "All Songs",
+      filterText: '',
+      filterKanji: false
     }
   },
   methods: {
     onToggleAlbum() {
       this.toggleList = !this.toggleList
+      this.filterText = ''
+      this.filterKanji = false
+    },
+    onToggleKanji() {
+      this.filterKanji = !this.filterKanji
+    }
+  },
+  computed: {
+    filteredSongs() {
+      let filteredSongList = this.songs
+      if (this.filterKanji) {
+        filteredSongList = filteredSongList.filter((song) => {
+          return song.name.search(new RegExp(/[一-龠]+|[ぁ-ゔ]+|[ァ-ヴー]/u, 'i')) !== -1
+        })
+      }
+      if (this.filterText) {
+        filteredSongList = filteredSongList.filter((song) => {
+          return song.name.search(new RegExp(this.filterText, 'i')) !== -1
+        })
+      }
+      return filteredSongList
     }
   }
 }
@@ -64,9 +93,32 @@ export default {
     cursor: pointer;
     border-radius: 10px;
     margin-bottom: 10px;
-    h3 {
+    .rightSide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .filterInput {
+        display: inline-block;
+        input {
+          width: 100px;
+          padding: 3px;
+        }
+        button {
+          background-color: #efc35e;
+          padding: 0 5px;
+          height: 25px;
+          &.toggled {
+            background-color: rgb(56, 49, 9);
+          }
+        }
+      }
+      h3 {
       color:#efc35e;
+      display: inline-block;
+      margin-left: 5px;
+      }
     }
+
   }
   .songList {
     .slide-enter-active {
