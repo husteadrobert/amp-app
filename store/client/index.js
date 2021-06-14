@@ -90,6 +90,7 @@ export const mutations = {
     state.selectedDifficultyName = ''
     state.selectedDifficultyLevel = ''
     state.backgroundColor = '#000000'
+    state.fontColor = '#FFFFFF'
     state.showDiff = true
 
   }
