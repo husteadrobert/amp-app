@@ -10,6 +10,12 @@
     </div>
     <div class="games-sidebar">
       <ul class="album-list">
+        <li class="gameAlbum">
+          <GameAlbum
+            :songs="allSongs"
+            :orderedDifficulties="orderedDifficulties"
+          />
+        </li>
         <li v-for="album in game.albums" :key="album.id" class="gameAlbum">
           <GameAlbum
             :album="album"
@@ -38,6 +44,7 @@ export default {
     return {
       game: {},
       songsByAlbum: [],
+      allSongs: [],
       orderedDifficulties: [],
       playStyles: []
     }
@@ -58,10 +65,11 @@ export default {
       return result.difficulties[entry].name
     })
 
-    console.log(result)
     this.game = result
     this.songsByAlbum = _.groupBy(result.songs, "selectedAlbum")
+    this.allSongs = _.flatten(Object.values(this.songsByAlbum))
     this.orderedDifficulties = diffKeys
+    console.log(this.allSongs)
     this.playStyles = result.playStyles
   },
 }

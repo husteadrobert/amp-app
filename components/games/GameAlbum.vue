@@ -1,7 +1,7 @@
 <template>
   <div class="game-album">
     <section class="albumPlate" @click.prevent="onToggleAlbum">
-      <h2>{{ album.name }}</h2>
+      <h2>{{ name }}</h2>
       <h3>{{ songs.length }} Songs</h3>
     </section>
     <section class="songList">
@@ -26,11 +26,11 @@ export default {
   props: {
     album: {
       type: Object,
-      default: 'all'
+      required: false
     },
     songs: {
       type: Array,
-      required: false
+      required: true
     },
     orderedDifficulties: {
       type: Array,
@@ -39,7 +39,8 @@ export default {
   },
   data() {
     return {
-      toggleList: false
+      toggleList: false,
+      name: !!this.album ? this.album.name : "All Songs"
     }
   },
   methods: {
