@@ -10,8 +10,14 @@
           </section>
           <section class="songInfo" :style="{color: selectedFontColor}">
             <div class="info">
-              <h2>{{ selectedSong.name }}</h2>
-              <h3>{{ selectedAlbum }}</h3>
+              <marquee-text v-if="selectedSong.name.length + selectedAlbum.length > 30" :repeat="10" :duration="25">
+                <h2>{{ selectedSong.name }}</h2>
+                <h3>{{ selectedAlbum }}</h3>
+              </marquee-text>
+              <div v-else>
+                <h2>{{ selectedSong.name }}</h2>
+                <h3>{{ selectedAlbum }}</h3>
+              </div>
               <h4 v-if="selectedDifficultyName">Difficulty: {{ selectedDifficultyName }} - {{selectedDifficultyLevel }} ({{ selectedPlayStyle }})</h4>
             </div>
           </section>
@@ -93,11 +99,12 @@ export default {
           height: 30%;
           .info {
             h2{
-              font-size: 2em;
+              font-size: 2.3em;
               display: inline;
             }
             h3{
               display: inline;
+              margin-right: 10px;
             }
             h4{
             }

@@ -14,7 +14,8 @@ export default {
   ],
 
   plugins: [
-    {src: '~plugins/vue-upload.js', mode: 'client' }
+    {src: '~plugins/vue-upload.js', mode: 'client' },
+    {src: '~plugins/marquee-text.js', mode: 'client' }
   ],
 
   components: true,
