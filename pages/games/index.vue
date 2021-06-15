@@ -28,6 +28,7 @@ export default {
   padding: 10px 20px;
   background-image: url('~@/assets/images/turntable.jpg');
   background-size: cover;
+  overflow-y: scroll;
 }
 
 </style>

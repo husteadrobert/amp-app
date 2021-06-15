@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="editGame">
     Game Page with ID {{ this.$route.params.gameId }} - {{ game.name }}
     <nuxt-link :to="`/admin/games/${this.$route.params.gameId}/edit`">Edit</nuxt-link>
     <AdminAlbumList  :albums="game.albums"/>
@@ -33,3 +33,11 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+.editGame {
+  background-color: white;
+  overflow-y: scroll;
+  height: 90vh;
+}
+</style>

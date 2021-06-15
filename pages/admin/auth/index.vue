@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="auth-index">
     Auth Index Page
     <form @submit.prevent="onSubmit">
       <input type="email" v-model="email" />
@@ -35,4 +35,7 @@ export default ({
 </script>
 
 <style scoped lang="less">
+.auth-index {
+  background-color: white;
+}
 </style>

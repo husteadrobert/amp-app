@@ -30,4 +30,9 @@ export default {
 </script>
 
 <style scoped lang="less">
+.game-container {
+  background-color: white;
+  overflow-y: scroll;
+  height: 90vh;
+}
 </style>

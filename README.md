@@ -2,8 +2,8 @@
 
 ## TODO
 - Game Widget Name and Difficulty design
-- Change Layouts from Deafult to Admin, MainWidget, and Pages (overflow css isssuse)
-- Style MuseDash Difficulty Buttons to show color of difficulty?
+- Add Album Info to Non all song and Widget
+- LP, How to Use, About pages
 
 ## Build Setup
 

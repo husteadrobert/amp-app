@@ -30,5 +30,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.edit-game {
+  background-color: white;
+  overflow-y: scroll;
+}
 
 </style>
