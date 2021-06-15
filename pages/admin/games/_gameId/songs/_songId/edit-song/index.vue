@@ -37,5 +37,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.edit-song {
+  background-color: white;
+  overflow-y: scroll;
+  height: 90vh;
+  padding-bottom: 30px;
+}
 
 </style>

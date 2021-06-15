@@ -22,6 +22,7 @@ export default {
 
 <style coped lang="less">
 .header-container {
+  background-color: white;
   padding: 20px 10px;
   ul {
     list-style: none;
