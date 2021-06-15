@@ -11,7 +11,7 @@
           <section class="songInfo" :style="{color: selectedFontColor}">
             <div class="info">
               <h2>{{ selectedSong.name }}</h2>
-              <h3>{{ selectedPlayStyle }} - {{ selectedDifficultyName }} - {{ selectedDifficultyLevel }}</h3>
+              <h3>{{ selectedAlbum }} - {{ selectedPlayStyle }} - {{ selectedDifficultyName }} - {{ selectedDifficultyLevel }}</h3>
             </div>
           </section>
         </div>
@@ -31,6 +31,9 @@ export default {
     },
     selectedDifficultyName() {
       return this.$store.getters['client/selectedDifficultyName']
+    },
+    selectedAlbum() {
+      return this.$store.getters['client/selectedAlbum']
     },
     selectedPlayStyle() {
       return this.$store.getters['client/playStyle']

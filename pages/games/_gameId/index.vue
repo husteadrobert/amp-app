@@ -14,6 +14,8 @@
           <GameAlbum
             :songs="allSongs"
             :orderedDifficulties="orderedDifficulties"
+            :albums="game.albums"
+            :isAllSongs="true"
           />
         </li>
         <li v-for="album in game.albums" :key="album.id" class="gameAlbum">
@@ -21,6 +23,7 @@
             :album="album"
             :songs="songsByAlbum[album.id]"
             :orderedDifficulties="orderedDifficulties"
+            :albums="game.albums"
           />
         </li>
       </ul>
@@ -69,7 +72,7 @@ export default {
     this.songsByAlbum = _.groupBy(result.songs, "selectedAlbum")
     this.allSongs = _.flatten(Object.values(this.songsByAlbum))
     this.orderedDifficulties = diffKeys
-    console.log(this.allSongs)
+    console.log(this.game)
     this.playStyles = result.playStyles
   },
 }

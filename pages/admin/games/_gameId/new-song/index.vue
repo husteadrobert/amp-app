@@ -35,5 +35,4 @@ export default {
   height: 90vh;
   padding-bottom: 30px;
 }
-
 </style>

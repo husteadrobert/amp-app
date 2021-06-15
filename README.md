@@ -4,6 +4,7 @@
 - Game Widget Name and Difficulty design
 - Add Album Info to Non all song and Widget
 - LP, How to Use, About pages
+- Order of Songs
 
 ## Build Setup
 

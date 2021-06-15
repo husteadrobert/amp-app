@@ -1,6 +1,7 @@
 export const state = () => ({
   playStyle: '',
   selectedSong: {},
+  selectedAlbum: '',
   selectedDifficultyName: '',
   selectedDifficultyLevel: '',
   backgroundColor: '#000000',
@@ -59,18 +60,21 @@ export const mutations = {
   },
   setSongAndDifficulty(state, data) {
     state.selectedSong = data.song
+    state.selectedAlbum = data.album
     state.selectedDifficultyName = data.difficultyName
     state.selectedDifficultyLevel = data.difficultyLevel
   },
   setSong(state, data) {
     state.selectedSong = data.song
+    state.selectedAlbum = data.album
     state.selectedDifficultyName = ''
     state.selectedDifficultyLevel = ''
   },
   initSelectedSong(state) {
     state.selectedSong = {}
     state.selectedDifficultyName = '',
-    state.selectedDifficultyLevel = ''
+    state.selectedDifficultyLevel = '',
+    state.selectedAlbum = ''
   },
   setPlayStyle(state, data) {
     state.playStyle = data
@@ -91,7 +95,8 @@ export const mutations = {
     state.selectedDifficultyLevel = ''
     state.backgroundColor = '#000000'
     state.fontColor = '#FFFFFF'
-    state.showDiff = true
+    state.showDiff = true,
+    state.selectedAlbum = ''
 
   }
 }
@@ -108,6 +113,9 @@ export const getters = {
   },
   selectedDifficultyName(state) {
     return state.selectedDifficultyName
+  },
+  selectedAlbum(state) {
+    return state.selectedAlbum
   },
   backgroundColor(state) {
     return state.backgroundColor

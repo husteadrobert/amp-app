@@ -5,9 +5,10 @@
         <img :src="song.imageUrl">
       </div>
       <div class="songName">
-        <h3>
+        <h3 :class="{ allSongs: isAllSongs }">
           {{ song.name }}
         </h3>
+        <h4 v-if="isAllSongs">{{ songAlbum }}</h4>
       </div>
     </section>
     <section class="songDifficulties">
@@ -36,12 +37,21 @@ export default {
     orderedDifficulties: {
       type: Array,
       required: true
+    },
+    albums: {
+      type: Object,
+      required: false
+    },
+    isAllSongs: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
     onSetSong() {
       const data = {
-        song: this.song
+        song: this.song,
+        album: this.songAlbum
       }
       this.$store.dispatch('client/setSong', data)
     },
@@ -49,7 +59,8 @@ export default {
       console.log(data)
       const payload = {
         ...data,
-        song: this.song
+        song: this.song,
+        album: this.songAlbum
       }
       this.$store.dispatch('client/setSongAndDifficulty', payload)
     }
@@ -58,6 +69,9 @@ export default {
     playStyle() {
       return this.$store.getters['client/playStyle']
     },
+    songAlbum() {
+      return this.albums[this.song.selectedAlbum].name
+    }
   }
 }
 </script>
@@ -89,6 +103,12 @@ export default {
       font-size: 20px;
       h3 {
         margin-top: 15px;
+        &.allSongs {
+          margin-top: 5px;
+        }
+      }
+      h4 {
+        font-size: 12px;
       }
     }
   }

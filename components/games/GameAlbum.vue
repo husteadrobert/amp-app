@@ -14,7 +14,7 @@
       <transition name="slide">
         <ul v-show="toggleList">
           <li v-for="song in filteredSongs" :key="song.id">
-            <GameSong :song="song" :orderedDifficulties="orderedDifficulties" />
+            <GameSong :song="song" :albums="albums" :isAllSongs="isAllSongs" :orderedDifficulties="orderedDifficulties" />
           </li>
         </ul>
       </transition>
@@ -34,6 +34,10 @@ export default {
       type: Object,
       required: false
     },
+    albums: {
+      type: Object,
+      required: false
+    },
     songs: {
       type: Array,
       required: true
@@ -41,6 +45,10 @@ export default {
     orderedDifficulties: {
       type: Array,
       required: true
+    },
+    isAllSongs: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -59,7 +67,7 @@ export default {
     },
     onToggleKanji() {
       this.filterKanji = !this.filterKanji
-    }
+    },
   },
   computed: {
     filteredSongs() {
@@ -75,7 +83,7 @@ export default {
         })
       }
       return filteredSongList
-    }
+    },
   }
 }
 </script>
