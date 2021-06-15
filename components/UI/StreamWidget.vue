@@ -11,7 +11,8 @@
           <section class="songInfo" :style="{color: selectedFontColor}">
             <div class="info">
               <h2>{{ selectedSong.name }}</h2>
-              <h3>{{ selectedAlbum }} - {{ selectedPlayStyle }} - {{ selectedDifficultyName }} - {{ selectedDifficultyLevel }}</h3>
+              <h3>{{ selectedAlbum }}</h3>
+              <h4 v-if="selectedDifficultyName">Difficulty: {{ selectedDifficultyName }} - {{selectedDifficultyLevel }} ({{ selectedPlayStyle }})</h4>
             </div>
           </section>
         </div>
@@ -90,6 +91,17 @@ export default {
           display: block;
           padding: 10px 10px 10px 80px;
           height: 30%;
+          .info {
+            h2{
+              font-size: 2em;
+              display: inline;
+            }
+            h3{
+              display: inline;
+            }
+            h4{
+            }
+          }
         }
       }
     }
