@@ -2,9 +2,8 @@
 
 ## TODO
 - Game Widget Name and Difficulty design
-- Add Album Info to Non all song and Widget
 - LP, How to Use, About pages
-- Order of Songs
+- Order of Songs(already in Album order, alphabet?)
 
 ## Build Setup
 

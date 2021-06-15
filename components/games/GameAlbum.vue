@@ -116,7 +116,8 @@ export default {
           padding: 0 5px;
           height: 25px;
           &.toggled {
-            background-color: rgb(56, 49, 9);
+            background-color: #dab256;
+            transform: scale(0.88);
           }
         }
       }
