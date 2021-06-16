@@ -3,7 +3,7 @@ export const state = () => ({
   selectedSong: {},
   selectedAlbum: '',
   selectedDifficultyName: '',
-  selectedDifficultyLevel: '',
+  selectedDifficultyLevel: 0,
   backgroundColor: '#000000',
   fontColor: '#FFFFFF',
   showDiff: true
@@ -30,8 +30,9 @@ export const actions = {
   setPlayStyle(vuexContext, data) {
     vuexContext.commit('setPlayStyle', data)
     if (!!vuexContext.state.selectedSong.id) {
+      const stateAlbum = vuexContext.state.selectedAlbum
       const stateSong = vuexContext.state.selectedSong
-      vuexContext.dispatch('setSong', {song: stateSong})
+      vuexContext.dispatch('setSong', {song: stateSong, album: stateAlbum})
     }
   },
   setBackgroundColor(vuexContext, data) {
@@ -68,12 +69,12 @@ export const mutations = {
     state.selectedSong = data.song
     state.selectedAlbum = data.album
     state.selectedDifficultyName = ''
-    state.selectedDifficultyLevel = ''
+    state.selectedDifficultyLevel = 0
   },
   initSelectedSong(state) {
     state.selectedSong = {}
     state.selectedDifficultyName = '',
-    state.selectedDifficultyLevel = '',
+    state.selectedDifficultyLevel = 0,
     state.selectedAlbum = ''
   },
   setPlayStyle(state, data) {
@@ -92,7 +93,7 @@ export const mutations = {
     state.playStyle = ''
     state.selectedSong = {}
     state.selectedDifficultyName = ''
-    state.selectedDifficultyLevel = ''
+    state.selectedDifficultyLevel = 0
     state.backgroundColor = '#000000'
     state.fontColor = '#FFFFFF'
     state.showDiff = true,

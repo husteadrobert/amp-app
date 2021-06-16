@@ -18,7 +18,9 @@
                 <h2>{{ selectedSong.name }}</h2>
                 <h3>{{ selectedAlbum }}</h3>
               </div>
-              <h4 v-if="selectedDifficultyName">Difficulty: {{ selectedDifficultyName }} - {{selectedDifficultyLevel }} ({{ selectedPlayStyle }})</h4>
+            </div>
+            <div v-if="selectedShowDiff" class="difficultyImage">
+              <DifficultyWidget :gameName="gameName" :difficultyName="selectedDifficultyName" :difficultyLevel="selectedDifficultyLevel" />
             </div>
           </section>
         </div>
@@ -28,7 +30,18 @@
 </template>
 
 <script>
+import DifficultyWidget from '@/components/UI/DifficultyWidget'
+
 export default {
+   components: {
+    DifficultyWidget
+  },
+  props: {
+    gameName: {
+      type: String,
+      required: false
+    }
+  },
   computed: {
     selectedSong() {
       return this.$store.getters['client/selectedSong']
@@ -95,9 +108,10 @@ export default {
         }
         .songInfo {
           display: block;
-          padding: 10px 10px 10px 80px;
+          padding: 10px;
           height: 30%;
           .info {
+            padding-left: 70px;
             h2{
               font-size: 2.3em;
               display: inline;
@@ -105,8 +119,6 @@ export default {
             h3{
               display: inline;
               margin-right: 10px;
-            }
-            h4{
             }
           }
         }

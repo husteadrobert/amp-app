@@ -2,7 +2,7 @@
   <div class="games-container">
     <div class="games-show">
       <div class="selected-song">
-        <StreamWidget />
+        <StreamWidget :gameName="game.name" />
       </div>
       <div class="game-options">
         <GameOption :playStyles="playStyles" />
