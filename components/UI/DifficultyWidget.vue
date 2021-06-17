@@ -2,8 +2,17 @@
   <div class="difficulty-widget">
     <div v-if="gameName === 'DJMAX RESPECT V'" class="djmax-diff">
       <div v-if="difficultyLevel" class="djmax-wrapper">
-        <div v-for="num in 15" :key="num" class="djmax-star">
-          <img src="@/assets/images/djmax/yellowstar.png">
+        <div v-for="num in 5" :key="'yellow_' + num" class="djmax-star yellow">
+          <img v-if="num <= difficultyLevel" src="@/assets/images/djmax/yellowstar.png">
+          <img v-else src="@/assets/images/djmax/blackstar.png">
+        </div>
+        <div v-for="num in 5" :key="'orange_' + num" class="djmax-star">
+          <img v-if="num + 5 <= difficultyLevel" src="@/assets/images/djmax/orangestar.png">
+          <img v-else src="@/assets/images/djmax/blackstar.png">
+        </div>
+        <div v-for="num in 5" :key="'purple_' + num" class="djmax-star">
+          <img v-if="num + 10 <= difficultyLevel" src="@/assets/images/djmax/purplestar.png">
+          <img v-else src="@/assets/images/djmax/blackstar.png">
         </div>
       </div>
     </div>
@@ -14,11 +23,11 @@
           <h3 v-if="difficultyName === 'Easy'" class="difficultyLevel"> {{ difficultyLevel }} </h3>
         </div>
         <div class="hard" :class="{ 'active': difficultyName === 'Hard'}">
-          <img src="@/assets/images/musedash/easy.png">
+          <img src="@/assets/images/musedash/hard.png">
           <h3 v-if="difficultyName === 'Hard'" class="difficultyLevel"> {{ difficultyLevel }} </h3>
         </div>
         <div class="master" :class="{ 'active': difficultyName === 'Master' || difficultyName === 'Hidden' }">
-          <img src="@/assets/images/musedash/easy.png">
+          <img src="@/assets/images/musedash/master.png">
           <h3 v-if="difficultyName === 'Master' || difficultyName === 'Hidden'" class="difficultyLevel"> {{ difficultyLevel }} </h3>
         </div>
       </div>
@@ -54,7 +63,10 @@ export default {
     align-items: center;
     margin-top: 5px;
     .djmax-star {
-      margin-left: -3px;
+      margin-left: -2px;
+      &.yellow {
+        margin-top: 2px;
+      }
     }
   }
   .stars-wrapper {
