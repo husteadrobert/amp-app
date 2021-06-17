@@ -3,7 +3,9 @@
     <div class="header-nav-inner">
       <nuxt-link to="/">
         <div class="logo">
-          LOGO
+          <div class="logo-wrapper">
+            <img src="@/assets/images/headphonesicon.png">
+          </div>
         </div>
       </nuxt-link>
       <div class="navigation-buttons">
@@ -44,6 +46,20 @@ export default {
     align-items: center;
     justify-content: space-between;
     margin: 0 10px;
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 65px;
+      height: 65px;
+      border: 5px solid black;
+      border-radius: 100%;
+      .logo-wrapper {
+        img {
+          width: 80px;
+        }
+      }
+    }
     .navigation-buttons {
       width: 25%;
       ul {
