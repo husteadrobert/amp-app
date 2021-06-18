@@ -10,7 +10,7 @@
           </section>
           <section class="songInfo" :style="{color: selectedFontColor}">
             <div class="info">
-              <marquee-text v-if="selectedSong.name.length + selectedAlbum.length > 30" :repeat="10" :duration="25">
+              <marquee-text v-if="selectedSong.name.length + selectedAlbum.length >= 28" :repeat="10" :duration="25" class="marquee">
                 <h2>{{ selectedSong.name }}</h2>
                 <h3>{{ selectedAlbum }}</h3>
               </marquee-text>
@@ -116,9 +116,11 @@ export default {
               font-size: 2.3em;
               display: inline;
             }
+            .marquee h3 {
+              margin-right: 10px;
+            }
             h3{
               display: inline;
-              margin-right: 10px;
             }
           }
         }

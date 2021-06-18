@@ -10,6 +10,7 @@ export default {
   },
 
   css: [
+    'normalize.css/normalize.css',
     '~/assets/main.less'
   ],
 
