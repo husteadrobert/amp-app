@@ -100,6 +100,11 @@ export default {
     border-left: 1px solid rgb(175, 60, 171);
     width: 35%;
     overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     .album-list {
       display: flex;
       flex-direction: column;
