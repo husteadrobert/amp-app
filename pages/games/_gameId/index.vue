@@ -81,18 +81,18 @@ export default {
 <style lang="less" scoped>
 .games-container {
   display: flex;
-  height: 98.5vh;
+  height: 94.5vh;
   background-image: url('~@/assets/images/dials.jpg');
   background-size: cover;
   .games-show {
     width: 65%;
     .selected-song {
-      height: 75%;
+      height: 80%;
     }
     .game-options {
       background: rgba(255, 255, 255, 0.2);
       border-top: 1px solid rgb(175, 60, 171);
-      height: 25%;
+      height: 20%;
     }
   }
   .games-sidebar {
