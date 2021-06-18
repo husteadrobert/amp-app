@@ -71,6 +71,9 @@ export default {
           margin-right: 10px;
           background-color: #461444;
           border-radius: 10px;
+          &.howto {
+            min-width: 135px;
+          }
           &.games {
             background-color: rgb(175, 60, 171);
           }

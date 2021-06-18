@@ -81,18 +81,15 @@ export default {
 <style lang="less" scoped>
 .games-container {
   display: flex;
-  height: 92.25vh;
+  height: 100vh;
   background-image: url('~@/assets/images/dials.jpg');
   background-size: cover;
   .games-show {
     width: 65%;
     .selected-song {
-      //background-color: blue;
-      //background: rgba(255, 255, 255, 0.2);
       height: 80%;
     }
     .game-options {
-      //background-color:lightskyblue;
       background: rgba(255, 255, 255, 0.2);
       border-top: 1px solid rgb(175, 60, 171);
       height: 20%;
@@ -100,7 +97,6 @@ export default {
   }
   .games-sidebar {
     padding: 15px;
-    //background-color: red;
     border-left: 1px solid rgb(175, 60, 171);
     width: 35%;
     overflow: auto;
@@ -110,8 +106,9 @@ export default {
       align-items: flex-start;
       justify-content: center;
       align-items: center;
+      width: 100%;
       li.gameAlbum {
-        width: 100%;
+        width: 98%;
         margin-bottom: 10px;
       }
     }

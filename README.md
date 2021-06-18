@@ -1,9 +1,9 @@
 # Amp-App
 
 ## TODO
-- Game Widget Name and Difficulty design
 - LP, How to Use, About pages
-- Order of Songs(already in Album order, alphabet?)
+- Reset
+- Mobile (under 1200 width)
 
 ## Build Setup
 
