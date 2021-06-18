@@ -61,7 +61,6 @@ export default {
       }
     }
     .navigation-buttons {
-      width: 25%;
       ul {
         display: flex;
         justify-content: center;

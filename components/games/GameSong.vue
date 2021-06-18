@@ -128,5 +128,29 @@ export default {
     }
   }
 }
-
+@media only screen and (max-width: 1200px) {
+  .game-song {
+    height: 100%;
+    .songInfo {
+      .songName {
+        h3 {
+          &.allSongs {
+            margin-top: 15px;
+          }
+        }
+      }
+    }
+    .songDifficulties {
+      margin-right: 0;
+      margin-bottom: 10px;
+      position: initial;
+      ul {
+        position: initial;
+        li {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
 </style>

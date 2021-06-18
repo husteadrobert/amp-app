@@ -49,4 +49,10 @@ body {
   padding: 0;
   list-style: none;
 }
+
+@media only screen and (max-width: 1200px) {
+  body {
+    background-position: center;
+  } 
+}
 </style>

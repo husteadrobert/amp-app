@@ -90,9 +90,6 @@ export default {
 .game-option {
   color: white;
   padding: 10px;
-  .title {
-    margin-bottom: 10px;
-  }
   .options {
     display: flex;
     .option-set {

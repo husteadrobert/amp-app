@@ -159,4 +159,22 @@ export default {
   }
 }
 
+@media only screen and (max-width: 1200px) {
+  .game-album {
+    .albumPlate {
+      .rightSide {
+        .filterInput {
+          input {
+            width: 75px;
+            padding: 3px;
+          }
+        }
+        h3 {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 </style>

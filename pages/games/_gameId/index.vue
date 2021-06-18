@@ -81,18 +81,18 @@ export default {
 <style lang="less" scoped>
 .games-container {
   display: flex;
-  height: 100vh;
+  height: 98.5vh;
   background-image: url('~@/assets/images/dials.jpg');
   background-size: cover;
   .games-show {
     width: 65%;
     .selected-song {
-      height: 80%;
+      height: 75%;
     }
     .game-options {
       background: rgba(255, 255, 255, 0.2);
       border-top: 1px solid rgb(175, 60, 171);
-      height: 20%;
+      height: 25%;
     }
   }
   .games-sidebar {
@@ -110,6 +110,17 @@ export default {
       li.gameAlbum {
         width: 98%;
         margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .games-container {
+    .games-sidebar {
+      padding: 5px;
+      .album-list {
+        overflow-x: hidden;
       }
     }
   }
