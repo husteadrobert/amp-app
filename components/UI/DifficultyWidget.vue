@@ -1,7 +1,21 @@
 <template>
   <div class="difficulty-widget">
     <div v-if="gameName === 'DJMAX RESPECT V'" class="djmax-diff">
-      <div v-if="difficultyLevel" class="djmax-wrapper">
+      <div v-if="difficultyLevel && difficultyName === 'SC'" class="djmax-wrapper">
+        <div v-for="num in 5" :key="'yellow_' + num" class="djmax-star yellow">
+          <img v-if="num <= difficultyLevel" src="@/assets/images/djmax/sc1.png">
+          <img v-else src="@/assets/images/djmax/blackstar.png">
+        </div>
+        <div v-for="num in 5" :key="'orange_' + num" class="djmax-star">
+          <img v-if="num + 5 <= difficultyLevel" src="@/assets/images/djmax/sc2.png">
+          <img v-else src="@/assets/images/djmax/blackstar.png">
+        </div>
+        <div v-for="num in 5" :key="'purple_' + num" class="djmax-star">
+          <img v-if="num + 10 <= difficultyLevel" src="@/assets/images/djmax/sc3.png">
+          <img v-else src="@/assets/images/djmax/blackstar.png">
+        </div>
+      </div>
+      <div v-else-if="difficultyLevel" class="djmax-wrapper">
         <div v-for="num in 5" :key="'yellow_' + num" class="djmax-star yellow">
           <img v-if="num <= difficultyLevel" src="@/assets/images/djmax/yellowstar.png">
           <img v-else src="@/assets/images/djmax/blackstar.png">
