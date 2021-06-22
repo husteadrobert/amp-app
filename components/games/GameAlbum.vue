@@ -82,7 +82,9 @@ export default {
           return song.name.search(new RegExp(this.filterText, 'i')) !== -1
         })
       }
-      return filteredSongList
+      return filteredSongList.sort((a,b) => {
+        return a.name.localeCompare(b.name)
+      })
     },
   }
 }

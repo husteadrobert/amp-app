@@ -23,6 +23,9 @@ export default {
     onSubmit(payload) {
       console.log(payload)
       this.$store.dispatch('games/addSong', payload)
+      .then((result) => {
+        this.$router.push(`/admin/games/${this.$route.params.gameId}`)
+      })
     }
   }
 }

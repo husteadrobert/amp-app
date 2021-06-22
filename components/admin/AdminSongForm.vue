@@ -138,6 +138,7 @@ export default {
         this.editGame.imageUrl = ''
       })
       .catch((e) => console.log(e))
+      this.editSong.imageUrl = ''
     },
     onSubmit() {
       this.$emit('submit', this.editSong)
