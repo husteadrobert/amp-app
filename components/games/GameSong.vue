@@ -56,7 +56,6 @@ export default {
       this.$store.dispatch('client/setSong', data)
     },
     onClickDifficulty(data) {
-      console.log(data)
       const payload = {
         ...data,
         song: this.song,

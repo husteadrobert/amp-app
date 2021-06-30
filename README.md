@@ -2,8 +2,7 @@
 
 ## TODO
 - LP, How to Use, About pages
-- Reset
-- Mobile (under 1200 width)
+- favicon
 
 ## Build Setup
 
